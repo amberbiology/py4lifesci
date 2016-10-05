@@ -1,6 +1,6 @@
 {
   "name": "Python for the Life Sciences",
   "tagline": "A gentle introduction to Python for life scientists",
-  "body": "### This is the public code repository for the book: **Python for the Life Sciences**\r\n<img src=\"https://dl.dropboxusercontent.com/u/11210070/cover-preview-small.png\" align=\"center\">\r\nThis is where you can download or browse the code for the book [_Python for the Life Sciences_](http://pythonforthelifesciences.com) released by @amberbiology.  The book is available via [Leanpub](http://leanpub.com/pythonforthelifesciences)",
+  "body": "### This is the public code repository for the book: **Python for the Life Sciences**\r\n->![Python For The Life Sciences](https://dl.dropboxusercontent.com/u/11210070/cover-preview-small.png) <-\r\nThis is where you can download or browse the code for the book [_Python for the Life Sciences_](http://pythonforthelifesciences.com) released by @amberbiology.  The book is available via [Leanpub](http://leanpub.com/pythonforthelifesciences)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
