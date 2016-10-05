@@ -1,6 +1,6 @@
 {
   "name": "Python for the Life Sciences",
   "tagline": "A gentle introduction to Python for life scientists",
-  "body": "### **Python for the Life Sciences**\r\nFrom here you can download or browse the code for the book [_Python for the Life Sciences_](http://pythonforthelifesciences.com) released by @amberbiology. The book is available via [Leanpub](http://leanpub.com/pythonforthelifesciences)",
+  "body": "# Python for the Life Sciences\r\nFrom here you can download or browse the code for the book [_Python for the Life Sciences_](http://pythonforthelifesciences.com) released by @amberbiology. The book is available via [Leanpub](http://leanpub.com/pythonforthelifesciences)",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
