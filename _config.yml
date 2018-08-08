@@ -2,6 +2,7 @@ title: Python for the Life Sciences
 description: A gentle introduction to Python for life scientists
 google_analytics: 
 show_downloads: true
+url: https://amberbiology.github.io/py4lifesci/
 theme: jekyll-theme-tactile
 
 gems:
