@@ -1,0 +1,8 @@
+title: Python for the Life Sciences
+description: A gentle introduction to Python for life scientists
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-tactile
+
+gems:
+  - jekyll-mentions
