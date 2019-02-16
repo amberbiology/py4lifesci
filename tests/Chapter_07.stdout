@@ -1,0 +1,25 @@
+Some made up sequence
+cgtatgcgct
+5
+My first DNA sequence
+gctgatatc
+3
+gcugauauc
+My first RNA sequence
+gcugauauc
+3
+ADI
+My first protein sequence
+MDVTLFSLQY
+4
+Transcribed from My first DNA sequence
+gcugauauc
+2775.7999999999997
+True
+g 329.2
+<__main__.DNANucleotide object at 0x7f5664eb07f0>
+g
+329.2
+2775.7999999999997
+gctgatatc
+10 10.0 DNA [1, 2, 3, 4, 5]

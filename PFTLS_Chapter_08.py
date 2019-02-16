@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -50,15 +50,14 @@ def sort_and_index(bam_filename):
     prefix, suffix = os.path.splitext(bam_filename)
     
     # generated sorted bam filename
-    sort_prefix = prefix + ".sorted"
-    sorted_bamfilename = sort_prefix + ".bam"
+    sorted_bamfilename = prefix + ".sorted.bam"
 
     # sort output using pysam's output
-    print "generate sorted BAM:", sorted_bamfilename
-    pysam.sort(bam_filename, sort_prefix)
+    print("generate sorted BAM:", sorted_bamfilename)
+    pysam.sort("-o", sorted_bamfilename, bam_filename)
 
     # index output using pysam's index
-    print "index BAM:", sorted_bamfilename
+    print("index BAM:", sorted_bamfilename)
     pysam.index(sorted_bamfilename)
 
     return sorted_bamfilename
@@ -89,7 +88,7 @@ output_bam_filename = prefix + '.bam'
 # using subprocess need to generate the standard output *first*
 with open(output_sam_filename, "w") as output_sam:
     # do the alignment, note that we hardcode the genome we align against to the bacterial genome
-    print "generated SAM output from:", input_fastq
+    print("generated SAM output from:", input_fastq)
     subprocess.check_call(['bwa', 'mem', 'NC_008253.fna', input_fastq], stdout=output_sam)
 
 # convert back to the binary (compressed) BAM format using samtools
@@ -101,14 +100,14 @@ output_sorted_bamfilename = sort_and_index(output_bam_filename)
 # set bamfile status
 read_count = 0
 
-print "now extract reads from:", output_sorted_bamfilename
+print("now extract reads from:", output_sorted_bamfilename)
 all_reads = pysam.AlignmentFile(output_sorted_bamfilename, 'rb')
 
 # create final output file
 output_final_bam = pysam.AlignmentFile(output_final_bam_filename, 'wb', template=all_reads)
 
 # use pysam to extract the reads from the given co-ordinates
-print "extract reads from chromosome:" + chrom + "at coordinates:", start, end
+print("extract reads from chromosome:" + chrom + "at coordinates:", start, end)
 output_reads= all_reads.fetch(chrom, start, end)
 
 for read in output_reads:
@@ -116,6 +115,6 @@ for read in output_reads:
     output_final_bam.write(read)
 all_reads.close()
 
-print "saving new BAM:", output_final_bam_filename, " with", read_count, "reads aligning in %s:%d-%d" % (chrom, start, end)
+print("saving new BAM:", output_final_bam_filename, " with", read_count, "reads aligning in %s:%d-%d" % (chrom, start, end))
 output_bam.close()  # finally close the output bam file
 sort_and_index(output_final_bam_filename) # sort and index

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Alex Lancaster'
 
@@ -77,7 +77,7 @@ plt.ylim(0, popMax)
 plt.xlabel('time')
 plt.ylabel('population count')
     
-time_points = range(generations + 1)
+time_points = list(range(generations + 1))
 plt.plot(time_points, Fx, label="Foxes")  
 plt.plot(time_points, Ch, label="Chickens")  
 plt.legend()
@@ -101,7 +101,7 @@ def animate(i):
   line.set_ydata(Fx[i])
   return line,
 
-ani = animation.FuncAnimation(fig2, animate, xrange(0, len(time_points)), init_func=init,
+ani = animation.FuncAnimation(fig2, animate, range(0, len(time_points)), init_func=init,
                               interval=25, blit=False)
 
 plt.show()

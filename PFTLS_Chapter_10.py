@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -49,12 +49,12 @@ class Plate:
         self.size = self.rows * self.columns
         self.validate = {}
         self.data = {}
-        for key in Plate.mapPositions.keys():
+        for key in Plate.mapPositions:
             self.validate[key] = []
         for n in range(1,self.size+1):
             self.data[n] = {}
             m = self.map(n,check=False)
-            for key in Plate.mapPositions.keys():
+            for key in Plate.mapPositions:
                 self.validate[key].append(m[Plate.mapPositions[key]])
 
     def map(self,loc,check=True):
@@ -90,7 +90,7 @@ class Plate:
     def get(self,loc,propertyName):
         m = self.map(loc)
         pos = m[Plate.mapPositions['position1D']]
-        if self.data[pos].has_key(propertyName):
+        if propertyName in self.data[pos]:
             return self.data[pos][propertyName]
         else:
             return
@@ -105,7 +105,7 @@ class Plate:
                         self.set(nWell, propertyName,float(wellData))
                         nWell += 1
         except:
-            print "CSV data could not be correctly read from: %s" % filePath
+            print("CSV data could not be correctly read from: %s" % filePath)
             return
         return
 
@@ -251,38 +251,38 @@ class Plate:
 # Test code for Plate.mapWell method
 p = Plate('My 96-well plate',8,12)
 p.definePhysicalMap(127.71,85.43,14.36,10.0,3.47,9.0,0.1)
-print p.mapWell(1)
-print p.mapWell(2)
-print p.mapWell(12)
-print p.mapWell(85)
-print p.mapWell(96)
+print(p.mapWell(1))
+print(p.mapWell(2))
+print(p.mapWell(12))
+print(p.mapWell(85))
+print(p.mapWell(96))
 
 
 # Demonstration of Python int() and round() functions
-print round(5.4)
-print round(5.6)
-print int(round(5.6))
+print(round(5.4))
+print(round(5.6))
+print(int(round(5.6)))
 
 
 # Test code for Plate.moveTo method
 p = Plate('My 96-well plate',8,12)
 p.definePhysicalMap(127.71,85.43,14.36,10.0,3.47,9.0,0.1)
 
-print p.moveTo(1)
-print p.x, p.y
-print p.mapWell(1)
+print(p.moveTo(1))
+print(p.x, p.y)
+print(p.mapWell(1))
 
-print p.moveTo(2)
-print p.x, p.y
-print p.mapWell(2)
+print(p.moveTo(2))
+print(p.x, p.y)
+print(p.mapWell(2))
 
-print p.moveTo(13)
-print p.x, p.y
-print p.mapWell(13)
+print(p.moveTo(13))
+print(p.x, p.y)
+print(p.mapWell(13))
 
-print p.moveTo(96)
-print p.x, p.y
-print p.mapWell(96)
+print(p.moveTo(96))
+print(p.x, p.y)
+print(p.mapWell(96))
 
 
 # Test code for Plate.plotPlate method
@@ -291,7 +291,7 @@ p.definePhysicalMap(127.71, 85.43, 14.36, 10.0, 3.47, 9.0, 0.1)
 p.readCSV('96plateCSV.txt', 'concentration')
 p.createColorMap('concentration', propertyRange=[0.0, 100.0])
 p.setPlotCurrentPosition(True, color='orange')
-print p.moveTo(15)
+print(p.moveTo(15))
 p.plotPlate(figWidth=8.0, figHeight=5.0, dpi=200)
 
 

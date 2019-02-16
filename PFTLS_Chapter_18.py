@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -59,7 +59,7 @@ class PatientList():
         if agent.state == 'susceptible': self.susceptible_agents.append(agent) 
         elif agent.state == 'infected': self.infected_agents.append(agent)
         elif agent.state == 'recovered': self.recovered_agents.append(agent)
-        else: print "error: must be one of the three valid states"
+        else: print("error: must be one of the three valid states")
 
     def infect(self):
         shuffle(self.susceptible_agents)   # shuffle list to get in random order
@@ -96,25 +96,25 @@ time = 0.0
 patients = PatientList()
 
 # create the individuals patients
-for indiv in xrange(susceptible_count):
+for indiv in range(susceptible_count):
     agent = Patient()      # by default all new patients are susceptible
     patients.append(agent) # add to list
 
-for indiv in xrange(infected_count):
+for indiv in range(infected_count):
     agent = Patient(state='infected')
     patients.append(agent)
 
-for indiv in xrange(recovered_count):
+for indiv in range(recovered_count):
     agent = Patient(state='recovered')
     patients.append(agent)
 
 while patients.get_num_infected() > 0:
 
-    for susc in xrange(patients.get_num_susceptible()):
+    for susc in range(patients.get_num_susceptible()):
         if random() < beta * (patients.get_num_infected() / float(patients.get_num_total())):
             patients.infect()  # infect patient
 
-    for infected in xrange(patients.get_num_infected()):
+    for infected in range(patients.get_num_infected()):
         if random() < gamma:
             patients.recover() # recover patient
 

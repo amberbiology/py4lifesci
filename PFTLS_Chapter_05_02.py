@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -50,5 +50,5 @@ for line in lines:
             # append the sequence to the dictionary
             seq_dict[seq_name] = seq_dict[seq_name] + line.strip()
 
-print seq_dict
+print(seq_dict)
 f.close()

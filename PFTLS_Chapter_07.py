@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -53,15 +53,15 @@ class Sequence:
 
     def validSequence(self):
         for residue in self.sequence:
-            if not residue in self.residues.keys():
+            if not residue in self.residues:
                 return False
         return True
 
 
 mySequence = Sequence('Some made up sequence','cgtatgcgct')
-print mySequence.name
-print mySequence.sequence
-print mySequence.search('gcg')
+print(mySequence.name)
+print(mySequence.sequence)
+print(mySequence.search('gcg'))
 
 
 class DNASequence(Sequence):
@@ -80,16 +80,15 @@ class DNASequence(Sequence):
 
 
 myDNASequence = DNASequence('My first DNA sequence','gctgatatc')
-print myDNASequence.name
-print myDNASequence.sequence
-print myDNASequence.search('gat')
-print myDNASequence.transcribe()
+print(myDNASequence.name)
+print(myDNASequence.sequence)
+print(myDNASequence.search('gat'))
+print(myDNASequence.transcribe())
 
 # This code does not work because mySequence has no transcribe method
 # Uncomment the following line to see the error message
 #print mySequence.transcribe()
 
-import string
 rnaToProtein = {'uuu':'F','uuc':'F','uua':'L','uug':'L',
                 'ucu':'S','ucc':'S','uca':'S','ucg':'S',
                 'uau':'Y','uac':'Y','uaa':'STOP','uag':'STOP',
@@ -118,15 +117,15 @@ class RNASequence(Sequence):
         for n in range(0,len(self.sequence),3):
             codon = self.sequence[n:n+3]
             peptide.append(rnaToProtein[codon])
-        peptideSequence = string.join(peptide,'')
+        peptideSequence = ''.join(peptide)
         return peptideSequence
 
 
 myRNASequence = RNASequence('My first RNA sequence','gcugauauc')
-print myRNASequence.name
-print myRNASequence.sequence
-print myRNASequence.search('gau')
-print myRNASequence.translate()
+print(myRNASequence.name)
+print(myRNASequence.sequence)
+print(myRNASequence.search('gau'))
+print(myRNASequence.translate())
 
 
 class ProteinSequence(Sequence):
@@ -136,18 +135,18 @@ class ProteinSequence(Sequence):
 
 
 myProteinSequence = ProteinSequence('My first protein sequence','MDVTLFSLQY')
-print myProteinSequence.name
-print myProteinSequence.sequence
-print myProteinSequence.search('LFS')
+print(myProteinSequence.name)
+print(myProteinSequence.sequence)
+print(myProteinSequence.search('LFS'))
 
 
 newRNASequence = myDNASequence.transcribeToRNA()
-print newRNASequence.name
-print newRNASequence.sequence
+print(newRNASequence.name)
+print(newRNASequence.sequence)
 
 
-print myDNASequence.molecularWeight()
-print myDNASequence.validSequence()
+print(myDNASequence.molecularWeight())
+print(myDNASequence.validSequence())
 
 
 class DNANucleotide:
@@ -160,7 +159,7 @@ class DNANucleotide:
 
 
 nucleotide = DNANucleotide('g')
-print nucleotide.name, nucleotide.weight
+print(nucleotide.name, nucleotide.weight)
 
 
 class NewDNASequence():
@@ -182,19 +181,19 @@ class NewDNASequence():
         nucs = []
         for s in self.sequence:
             nucs.append(s.name)
-        return string.join(nucs,'')
+        return ''.join(nucs)
 
 
 myDNASequence = NewDNASequence('My new DNA sequence','gctgatatc')
-print myDNASequence.sequence[0]
-print myDNASequence.sequence[0].name
-print myDNASequence.sequence[0].weight
-print myDNASequence.molecularWeight()
-print myDNASequence
+print(myDNASequence.sequence[0])
+print(myDNASequence.sequence[0].name)
+print(myDNASequence.sequence[0].weight)
+print(myDNASequence.molecularWeight())
+print(myDNASequence)
 
 
 a = 10
 b = 10.0
 c = 'DNA'
 d = [1,2,3,4,5]
-print a, b, c, d
+print(a, b, c, d)

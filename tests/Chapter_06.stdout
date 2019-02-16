@@ -1,0 +1,14 @@
+[]
+['ccggg', 'cccgg']
+['ccggg', 'cccgg']
+['ccggg', 'cccgg']
+['ttgacaccccccccccccccccctataat']
+['ttgacaccccccccccccccccccccctataat']
+<callable_iterator object at 0x7fb28318cba8>
+ttgacaccccccccccccccccctataat
+5 34
+Start time = 1549952043.1104643 seconds. End time = 1549952043.1105611  seconds.
+Average search time was  9.587669372558593e-07  seconds
+Number of search hits =  61368
+Average search time was  9.361484050750732e-07  seconds
+Number of search hits =  239802
