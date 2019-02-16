@@ -1,0 +1,6 @@
+Probability (disease | positive result) =  0.23346303501945526
+p (has disease | positive test result) = 0.23
+The gene to be analyzed is: TP53 tumor protein p53 [ Homo sapiens (human) ]
+The gene ID number is: 7157
+The gene match probability is: 98.648
+The results for geneId: 7157: TP53 tumor protein p53 [ Homo sapiens (human) ]

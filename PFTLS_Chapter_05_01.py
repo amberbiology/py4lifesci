@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -42,9 +42,9 @@ for line in lines:
     try:
         level = float(line)
     except ValueError:
-        print "line is not a number:", line
-    print level
+        print("line is not a number:", line)
+    print(level)
     sum += level
     count += 1
-print "average:", sum/float(count)
+print("average:", sum/float(count))
 f.close()

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -49,19 +49,19 @@ def bayes(outComeA,outComeB,pB,pAGivenB,pAGivenNotB):
 pDisease = 0.015
 pPosDisease = 0.8
 pPosNoDisease = 0.04
-print 'Probability (disease | positive result) = ',biomarker(pDisease,pPosDisease,pPosNoDisease)
+print('Probability (disease | positive result) = ',biomarker(pDisease,pPosDisease,pPosNoDisease))
 
 outcomeA = 'positive test result'
 outcomeB = 'has disease'
 pB = 0.015
 pAGivenB = 0.8
 pAGivenNotB = 0.04
-print bayes(outcomeA,outcomeB,pB,pAGivenB,pAGivenNotB)
+print(bayes(outcomeA,outcomeB,pB,pAGivenB,pAGivenNotB))
 
 geneName = 'TP53 tumor protein p53 [ Homo sapiens (human) ]'
 geneID = 7157
 matchProbability = 98.64756341
-print 'The gene to be analyzed is: %s' % geneName
-print 'The gene ID number is: %d' % geneID
-print 'The gene match probability is: %.3f' % matchProbability
-print 'The results for geneId: %d: %s' % (geneID,geneName)
+print('The gene to be analyzed is: %s' % geneName)
+print('The gene ID number is: %d' % geneID)
+print('The gene match probability is: %.3f' % matchProbability)
+print('The results for geneId: %d: %s' % (geneID,geneName))

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -43,38 +43,38 @@ restrictionEnzymes['nci1'] = ['cc[cg]gg',2]
 restrictionEnzymes['scrF1'] = ['cc[atcg]gg',2]
 
 sequence1 = 'atatatccgggatatatcccggatatat'
-print re.findall(restrictionEnzymes['bamH1'][0],sequence1)
-print re.findall(restrictionEnzymes['nci1'][0],sequence1)
-print re.findall(restrictionEnzymes['scrF1'][0],sequence1)
+print(re.findall(restrictionEnzymes['bamH1'][0],sequence1))
+print(re.findall(restrictionEnzymes['nci1'][0],sequence1))
+print(re.findall(restrictionEnzymes['scrF1'][0],sequence1))
 
 
 restrictionEnzymes['scrF1'] = ['cc.gg',2]
-print re.findall(restrictionEnzymes['scrF1'][0],sequence1)
+print(re.findall(restrictionEnzymes['scrF1'][0],sequence1))
 
 
 promoter = 'ttgaca...................tataat'
 promoter = 'ttgaca.{15,25}tataat'
 sequence2 = 'cccccttgacaccccccccccccccccctataatccccc'
 sequence3 = 'cccccttgacaccccccccccccccccccccctataatccccc'
-print re.findall(promoter,sequence2)
-print re.findall(promoter,sequence3)
+print(re.findall(promoter,sequence2))
+print(re.findall(promoter,sequence3))
 
-print re.finditer(promoter,sequence2)
+print(re.finditer(promoter,sequence2))
 matches = re.finditer(promoter,sequence2)
 for m in matches:
-    print m.group()
-    print m.start(),m.end()
+    print(m.group())
+    print(m.start(),m.end())
 
 
 # Generating a randomized 250 million base chromosome may take a
 # few minutes depending upon your computer's speed, so be patient.
 # Searching it will be much (much) quicker :-)
-import random, string
+import random
 bases = ['a','t','c','g']
 sequenceList = []
 for n in range(0,250000000):
     sequenceList.append(random.choice(bases))
-chromosome = string.join(sequenceList,'')
+chromosome = ''.join(sequenceList)
 
 
 import time
@@ -82,7 +82,7 @@ searchPattern = 'tataat'
 t1 = time.time()
 result = re.finditer(searchPattern,chromosome)
 t2 = time.time()
-print 'Start time =',t1,'seconds. End time =',t2,' seconds.'
+print('Start time =',t1,'seconds. End time =',t2,' seconds.')
 
 
 nsearch = 1000000
@@ -90,12 +90,12 @@ t1 = time.time()
 for n in range(0,nsearch):
     result = re.finditer(searchPattern,chromosome)
 t2 = time.time()
-print 'Average search time was ',(t2-t1)/float(nsearch),' seconds'
+print('Average search time was ',(t2-t1)/float(nsearch),' seconds')
 nmatches = 0
 
 for match in result:
     nmatches += 1
-print 'Number of search hits = ',nmatches
+print('Number of search hits = ',nmatches)
 
 
 searchPattern = 'tat.at'
@@ -104,9 +104,9 @@ t1 = time.time()
 for n in range(0,nsearch):
     result = re.finditer(searchPattern,chromosome)
 t2 = time.time()
-print 'Average search time was ',(t2-t1)/float(nsearch),' seconds'
+print('Average search time was ',(t2-t1)/float(nsearch),' seconds')
 nmatches = 0
 
 for match in result:
     nmatches += 1
-print 'Number of search hits = ',nmatches
+print('Number of search hits = ',nmatches)

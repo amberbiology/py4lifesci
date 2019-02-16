@@ -1,0 +1,8 @@
+generated SAM output from: e_coli_10000snp.fq
+generate sorted BAM: e_coli_10000snp.sorted.bam
+index BAM: e_coli_10000snp.sorted.bam
+now extract reads from: e_coli_10000snp.sorted.bam
+extract reads from chromosome:gi|110640213|ref|NC_008253.1|at coordinates: 20 200
+saving new BAM: final.bam  with 216 reads aligning in gi|110640213|ref|NC_008253.1|:20-200
+generate sorted BAM: final.sorted.bam
+index BAM: final.sorted.bam

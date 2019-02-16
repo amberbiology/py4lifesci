@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -140,8 +140,8 @@ for angle in range(0,360,30):
     posz.append(pz)
     dist.append(math.sqrt((px-serCB.x)**2 + (py-serCB.y)**2 + (pz-serCB.z)**2))
 for d in dist:
-    print "%.5f" % d,
-print
+    print("%.5f" % d, end=' ')
+print()
 plt.scatter(posx, posy, c=posz, s=100)
 plt.gray()
 plt.show()
@@ -163,7 +163,7 @@ for angle in range(0,360,incRot):
     angleData.append(angle)
     distData.append(dist)
     eData.append(elec)
-    print angle,dist,elec
+    print(angle,dist,elec)
 plt.title('Distance/Electrostatic Energy vs. Bond Rotation')
 plt.plot(angleData,eData,"red",angleData,distData,'blue')
 plt.axis([0,360,0,20])

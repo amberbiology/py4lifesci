@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -88,7 +88,7 @@ def simulate_population(generations, num_alleles, selection=False):
     allele_counts = zeros((generations + 1, 2)) # create a 2xgeneration array of counts: A (col0) and B (col1), rows = generation
     allele_counts[0, :] = num_alleles           # initialize the allele counts at time, t=0
 
-    for t in xrange(generations):
+    for t in range(generations):
 
         # calculate allele frequencies
         f_A = allele_counts[t,0] / twoN                    # current frequency of A allele in the population
@@ -100,7 +100,7 @@ def simulate_population(generations, num_alleles, selection=False):
         allele_counts[t+1,0] = binomial(twoN, f_A)         # get new count for allele A, sampling from the binomial distribution with 2N trials and f_A
         allele_counts[t+1,1] = twoN - allele_counts[t+1,0] # get new count for allele B, by subtracting allele B count from total
 
-        print allele_counts[t+1, 0], allele_counts[t+1,1]
+        print(allele_counts[t+1, 0], allele_counts[t+1,1])
 
     return allele_counts
 
@@ -118,7 +118,7 @@ def plot_population(allele_counts, generations, selection):
     else:
         plt.title('drift')
         
-    time_points = range(generations + 1)
+    time_points = list(range(generations + 1))
     plt.plot(time_points, allele_counts[:,0], label="A")  # A allele
     plt.plot(time_points, allele_counts[:,1], label="B")  # B allele
     plt.legend()
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     generations = 30          # generations
     num_alleles = [10, 10]    # initial number of alleles [A, B]
 
-    print num_alleles[0], num_alleles[1]
+    print(num_alleles[0], num_alleles[1])
 
     # drift
     allele_counts = simulate_population(generations, num_alleles, selection=False)

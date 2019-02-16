@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -35,104 +35,104 @@ __author__ = 'Amber Biology LLC'
 # For more information, please refer to <http://unlicense.org/>
 
 mySequence = 'atcg'
-print 'Sequence length is ',len(mySequence)
+print('Sequence length is ',len(mySequence))
 
 
 for c in mySequence:
-    print c
+    print(c)
 
 for c in mySequence:
-    print 'This line will be executed for each pass through the loop'
-    print 'So will this one'
-print 'This line will only be executed at the end'
+    print('This line will be executed for each pass through the loop')
+    print('So will this one')
+print('This line will only be executed at the end')
 
 
 i = 0
 for c in mySequence:
     i += 1
-    print i,c
+    print(i,c)
 
 
-print mySequence[0]
-print mySequence[3]
-print mySequence[-1]
-print mySequence[0:4]
-print mySequence[:4]
-print mySequence[2:3]
-print mySequence[2:4]
-print mySequence[2:]
-print mySequence[-3:]
+print(mySequence[0])
+print(mySequence[3])
+print(mySequence[-1])
+print(mySequence[0:4])
+print(mySequence[:4])
+print(mySequence[2:3])
+print(mySequence[2:4])
+print(mySequence[2:])
+print(mySequence[-3:])
 
 
 mySequenceAsAList = ['a','t','c','g']
 
-print mySequenceAsAList[0]
-print mySequenceAsAList[3]
-print mySequenceAsAList[-1]
-print mySequenceAsAList[0:4]
-print mySequenceAsAList[:4]
-print mySequenceAsAList[2:3]
-print mySequenceAsAList[2:4]
-print mySequenceAsAList[2:]
-print mySequenceAsAList[-3:]
+print(mySequenceAsAList[0])
+print(mySequenceAsAList[3])
+print(mySequenceAsAList[-1])
+print(mySequenceAsAList[0:4])
+print(mySequenceAsAList[:4])
+print(mySequenceAsAList[2:3])
+print(mySequenceAsAList[2:4])
+print(mySequenceAsAList[2:])
+print(mySequenceAsAList[-3:])
 
 
 myList = ['atcg',['a','t','c','g'],42,True,None]
 
-print 'Length of myList is: ',len(myList)
-print myList[0]
-print myList[1]
-print myList[2]
-print myList[3]
-print myList[4]
-print myList[1][2]
-print myList[1][1:3]
-print
+print('Length of myList is: ',len(myList))
+print(myList[0])
+print(myList[1])
+print(myList[2])
+print(myList[3])
+print(myList[4])
+print(myList[1][2])
+print(myList[1][1:3])
+print()
 
 correctSpelling = 'recognize'
 
 correctSpelling = ['r','e','c','o','g','n','i','z','e']
 
 correctSpelling[7] = 's'
-print correctSpelling
+print(correctSpelling)
 
 # The following code doesn't work - strings cannot be edited like this
 # Uncomment the [correctSpelling[7] = 's'] line and try to run it to see the error message
 correctSpelling = 'recognize'
 #correctSpelling[7] = 's'
-print correctSpelling
+print(correctSpelling)
 
 correctSpelling = 'recognize'
 correctSpelling = correctSpelling.replace('s','z')
-print correctSpelling
+print(correctSpelling)
 
 
 myList = ['apple','banana','pear','llama','orange']
-print myList
+print(myList)
 myList.append('peach')
-print myList
+print(myList)
 myList.insert(2,'kiwi')
-print myList
+print(myList)
 myList.remove('llama')
-print myList
+print(myList)
 myList[4] = 'lemon'
-print myList
-print sorted(myList)
+print(myList)
+print(sorted(myList))
 
 
 musician = {'name':'Nigel','instrument':'guitar','preferred volume':11,}
-print musician['name']
-print musician['instrument']
-print musician['preferred volume']
+print(musician['name'])
+print(musician['instrument'])
+print(musician['preferred volume'])
 
 
 gene = {'name':'p53','taxonomy':9606,'metal binding':True,'locations':['cytoplasm','nucleus']}
-print gene['name']
-print gene['taxonomy']
-print gene['metal binding']
-print gene['locations']
-print gene['locations'][0]
-print gene['locations'][1]
+print(gene['name'])
+print(gene['taxonomy'])
+print(gene['metal binding'])
+print(gene['locations'])
+print(gene['locations'][0])
+print(gene['locations'][1])
 
 
 def oligoMolecularWeight(sequence):
@@ -143,23 +143,23 @@ def oligoMolecularWeight(sequence):
     return molecularWeight
 
 dnaSequence = 'tagcgctttatcg'
-print oligoMolecularWeight(dnaSequence)
+print(oligoMolecularWeight(dnaSequence))
 
 
 restrictionEnzymes = {}
 restrictionEnzymes['bamH1'] = ['ggatcc',0]
 restrictionEnzymes['sma1'] = ['cccggg',2]
 
-print restrictionEnzymes.keys()
-print restrictionEnzymes.has_key('sma1')
-print restrictionEnzymes.has_key('EcoR1')
-print sorted(restrictionEnzymes.keys())
+print(list(restrictionEnzymes.keys()))
+print('sma1' in restrictionEnzymes)
+print('EcoR1' in restrictionEnzymes)
+print(sorted(restrictionEnzymes.keys()))
 
 
 mySequence = 'gctgtatttcgatcgatttatgct'
-print mySequence.find('ttt')
-print mySequence.find('ttt',7)
-print mySequence.find('gtgtgt',7)
+print(mySequence.find('ttt'))
+print(mySequence.find('ttt',7))
+print(mySequence.find('gtgtgt',7))
 
 
 found = 0
@@ -167,18 +167,18 @@ searchFrom = found
 while found != -1:
     found = mySequence.find('ttt',searchFrom)
     if found != -1:
-        print 'Substring found at: ',found
+        print('Substring found at: ',found)
     searchFrom = found + 1
 
 
 fruit = ['apple','orange']
-print fruit
+print(fruit)
 fruit[1] = 'pear'
-print fruit
+print(fruit)
 
 
 fruit = ('apple','orange')
-print fruit
+print(fruit)
 
 
 # The following code doesn't work - tuples are immutable and cannot be edited
@@ -207,4 +207,4 @@ def restrictionDigest(sequence,enzyme):
     return fragments
 
 digestSequence = 'gcgatgctaggatccgcgatcgcgtacgatcgtacgcggtacggacggatccttctc'
-print restrictionDigest(digestSequence,'bamH1')
+print(restrictionDigest(digestSequence,'bamH1'))

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -56,7 +56,7 @@ limerick = """ Said a young researcher named Spode
 
 # Calculate mass of water molecule and output it to console
 h2oMass = h2oOxygens * oxygenMass + h2oHydrogens * hydrogenMass
-print 'Molecular weight of H20 = ',h2oMass
+print('Molecular weight of H20 = ',h2oMass)
 
 # A simple function to calculate molar volumes
 def calculateMolarVolume(mass,density):
@@ -64,7 +64,7 @@ def calculateMolarVolume(mass,density):
     return volume
 
 h2oMolarVolume = calculateMolarVolume(h2oMass,h2o_density_in_grams_per_liter)
-print 'Volume of 1 mole of H2O = ',h2oMolarVolume,'L'
+print('Volume of 1 mole of H2O = ',h2oMolarVolume,'L')
 
 # A function to calculate molecules per liter
 def moleculesPerLiter(mass,density):
@@ -74,24 +74,24 @@ def moleculesPerLiter(mass,density):
     return numberOfMolecules
 
 h2oMoleculesPerLiter = moleculesPerLiter(h2oMass,h2o_density_in_grams_per_liter)
-print 'Number of molecules of H2O in 1L = ',h2oMoleculesPerLiter
+print('Number of molecules of H2O in 1L = ',h2oMoleculesPerLiter)
 
 # Beware the quirks of integer arithmetic!
 a = 3
 b = 6
-print 'a/b = ',a/b
-print 'b/a = ',b/a
-print '12/5 = ',12/5
+print('a/b = ',a/b)
+print('b/a = ',b/a)
+print('12/5 = ',12/5)
 a = 3.0
 b = 6.0
-print 'a/b = ',a/b
+print('a/b = ',a/b)
 
 # ... and don't forget mathematical operator precedence
 a = 6.0
 b = 3.0
 c = 5.0
-print 'a/b+c = ',a/b+c
-print 'a/(b+c) = ',a/(b+c)
+print('a/b+c = ',a/b+c)
+print('a/(b+c) = ',a/(b+c))
 
 # Function for calculating buffer recipes that uses conditionals
 def bufferRecipe(buffer,molarity):
@@ -110,26 +110,26 @@ def bufferRecipe(buffer,molarity):
 something = 6
 anotherThing = 6
 if something == anotherThing:
-    print 'This statement will be printed'
-    print 'So will this one'
-print 'This statement gets printed either way'
+    print('This statement will be printed')
+    print('So will this one')
+print('This statement gets printed either way')
 
 anotherThing = 4
 if something == anotherThing:
-    print 'This statement will be printed'
-    print 'So will this one'
-print 'This statement gets printed either way'
+    print('This statement will be printed')
+    print('So will this one')
+print('This statement gets printed either way')
 
 something = 10
 if something == 6:
-    print 'something is 6'
+    print('something is 6')
 elif something == 4:
-    print 'something is 4'
+    print('something is 4')
 else:
-    print 'something is something else entirely'
+    print('something is something else entirely')
 
 # Testing our bufferRecipe function
-print 'Recipe for 0.1M Tris = ',bufferRecipe('Tris',0.1),'g/L'
-print 'Recipe for 0.5M MES = ',bufferRecipe('MES',0.5),'g/L'
-print 'Recipe for 1mM HEPES = ',bufferRecipe('HEPES',1.0e-3),'g/L'
-print 'Recipe for 1.0M Goop = ',bufferRecipe('Goop',1.0),'g/L'
+print('Recipe for 0.1M Tris = ',bufferRecipe('Tris',0.1),'g/L')
+print('Recipe for 0.5M MES = ',bufferRecipe('MES',0.5),'g/L')
+print('Recipe for 1mM HEPES = ',bufferRecipe('HEPES',1.0e-3),'g/L')
+print('Recipe for 1.0M Goop = ',bufferRecipe('Goop',1.0),'g/L')

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -49,12 +49,12 @@ class Plate:
         self.size = self.rows * self.columns
         self.validate = {}
         self.data = {}
-        for key in Plate.mapPositions.keys():
+        for key in Plate.mapPositions:
             self.validate[key] = []
         for n in range(1,self.size+1):
             self.data[n] = {}
             m = self.map(n,check=False)
-            for key in Plate.mapPositions.keys():
+            for key in Plate.mapPositions:
                 self.validate[key].append(m[Plate.mapPositions[key]])
 
     def map(self,loc,check=True):
@@ -90,7 +90,7 @@ class Plate:
     def get(self,loc,propertyName):
         m = self.map(loc)
         pos = m[Plate.mapPositions['position1D']]
-        if self.data[pos].has_key(propertyName):
+        if propertyName in self.data[pos]:
             return self.data[pos][propertyName]
         else:
             return
@@ -105,7 +105,7 @@ class Plate:
                         self.set(nWell, propertyName,float(wellData))
                         nWell += 1
         except:
-            print "CSV data could not be correctly read from: %s" % filePath
+            print("CSV data could not be correctly read from: %s" % filePath)
             return
         return
 
@@ -250,16 +250,16 @@ class Plate:
 
 # Test code for plate mapping
 p = Plate('Assay 42',8,12)
-print p.map(1)
-print p.map((1,1))
-print p.map('A01')
+print(p.map(1))
+print(p.map((1,1)))
+print(p.map('A01'))
 
-print p.map(96)
-print p.map((8,12))
-print p.map('H12')
+print(p.map(96))
+print(p.map((8,12)))
+print(p.map('H12'))
 
 result = p.map('B01')
-print result[Plate.mapPositions['wellID']]
+print(result[Plate.mapPositions['wellID']])
 
 
 # Code to demonstrate Python objects testing True or False
@@ -269,45 +269,45 @@ def testA(a):
     else:
         return "a seems to be False"
 
-print testA(1)
-print testA(0)
-print testA(-1)
-print testA(0.0)
-print testA(0.00001)
-print testA([])
-print testA([1,2,3])
-print testA("")
-print testA("a")
+print(testA(1))
+print(testA(0))
+print(testA(-1))
+print(testA(0.0))
+print(testA(0.00001))
+print(testA([]))
+print(testA([1,2,3]))
+print(testA(""))
+print(testA("a"))
 
 
 # Code to test Plate.get and Plate.set methods
 p = Plate('myPlate',8,12)
 p.set('B01', 'conc', 0.87)
-print p.get(13, 'conc')
-print p.get((2,1), 'conc')
-print p.get('B01', 'conc')
+print(p.get(13, 'conc'))
+print(p.get((2,1), 'conc'))
+print(p.get('B01', 'conc'))
 
 
 # Code to test reading and parsing CSV data from a file
 p = Plate('My 96-Well Plate',8,12)
 p.readCSV('96plateCSV.txt','concentration')
-print p.get(1,'concentration')
-print p.get(12,'concentration')
-print p.get(96,'concentration')
+print(p.get(1,'concentration'))
+print(p.get(12,'concentration'))
+print(p.get(96,'concentration'))
 
 
 # Code to test the Plate.getRow method
 p = Plate('My 96-Well Plate',8,12)
 p.readCSV('96plateCSV.txt','concentration')
-print p.getRow('B01')
-print p.getRow(27)
-print p.getRow((4,7))
+print(p.getRow('B01'))
+print(p.getRow(27))
+print(p.getRow((4,7)))
 
 
 # Code to test the Plate.average method
 p = Plate('My 96-Well Plate',8,12)
 p.readCSV('96plateCSV.txt','concentration')
-print p.average('concentration','B03')
-print p.average('concentration')
+print(p.average('concentration','B03'))
+print(p.average('concentration'))
 
 

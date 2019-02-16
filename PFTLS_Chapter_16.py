@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 __author__ = 'Amber Biology LLC'
 
@@ -34,85 +34,78 @@ __author__ = 'Amber Biology LLC'
 #
 # For more information, please refer to <http://unlicense.org/>
 
-import turtle
-import sys
+from numpy import zeros
+from numpy.random import random, seed
+import matplotlib.pyplot as plt
 
-# Lindenmayer's original L-system for modelling the growth of algae.
-# rules : (A -> AB), (B -> A)
+def simulation_step(CA, next_CA):
 
-def algae_growth(number, output="A", show=False):
-    for i in range(number):
-        new_output = ""
-        for letter in output:
-            if letter == "A":        # rule #1
-                new_output += "AB"
-            elif letter == "B":      # rule #2
-                new_output += "A"
-        output = new_output
-        if show: print "n =", i+1, output, "[", len(output), "]"
-    return output
+    for x in range(width):
+        for y in range(height):
 
-def plant_growth(number, output="X", show=False):
+            cell_state = CA[y, x]  # get current state
 
-    for i in range(number):
-        new_output = ""
-        for letter in output:
-            # rule #1
-            if letter == "X":
-                new_output += "F-[[X]+X]+F[+FX]-X"
-            elif letter == "F":
-                new_output += "FF"
+            activating_cells = 0
+            inhibiting_cells = 0
+
+            # count the number of inhibiting cells within the radius
+            for xpos in range(- inhibitor_radius, inhibitor_radius + 1):
+                for ypos in range(- inhibitor_radius, inhibitor_radius + 1):
+                    inhibiting_cells += CA[(y+ypos)%height, (x+xpos)%width]
+
+            # count the number of activating cells within the radius
+            for xpos in range(- activator_radius, activator_radius + 1):
+                for ypos in range(- activator_radius, activator_radius + 1):
+                    activating_cells += CA[(y+ypos)%height, (x+xpos)%width]
+
+            # if weighted sum of activating cells is greater than inhibiting cells in neighbourhood
+            # we induce differentiation in the current cell 
+            if (activating_cells * activator_weight) + (inhibiting_cells * inhibitor_weight) > 0:
+                cell_state = 1
             else:
-                new_output += letter
-        output = new_output
-        if show: print "n =", i+1, output, "[", len(output), "]"
-    return output
+                cell_state = 0
 
-def draw_plant(actions):
+            # now update the state
+            next_CA[y, x] = cell_state
 
-    stk = []
-    for action in actions:
-        if action=='X':        # do nothing
-            pass
-        elif action== 'F':     # go forward
-            turtle.forward(2)
-        elif action=='+':      # rotate right by 25 degrees
-            turtle.right(25)
-        elif action=='-':      # rotate left by 25 degrees
-            turtle.left(25)
-        elif action=='[':
-            # save the position and heading by "pushing" down on to the stack
-            pos = turtle.position()
-            head = turtle.heading()
-            stk.append((pos, head))
-        elif action==']':
-            # restore position and heading: by "popping" off the first item from stack
-            pos, head = stk.pop()
-            turtle.penup()
-            turtle.setposition(pos)
-            turtle.setheading(head)
-            turtle.pendown()
+    return next_CA
+
+seed()
+
+probability_of_black = 0.5
+width = 100
+height = 100
+
+# initialize cellular automata (CA)
+CA = zeros([height, width])       # main CA
+next_CA = zeros([height, width])  # CA next timestep
+
+activator_radius = 1
+activator_weight = 1
+inhibitor_radius = 5
+inhibitor_weight = -0.1
+
+time = 0
+
+# initialize the CA
+for x in range(width):
+    for y in range(height):
+        if random() < probability_of_black:
+            cell_state = 1
         else:
-            raise ValueError("don't recognize action", action)
-        
-    turtle.update()
+            cell_state = 0
+        CA[y, x] = cell_state
 
-print "n = 0", "A", "[ 1 ]"
-algae=algae_growth(6, output="A", show=True)
+# create plot
+fig1 = plt.figure()
 
-print "n = 0", "X", "[ 1 ]"
-plant=plant_growth(6, output="X", show=False)
+# loop through times
+for time in range(10):
+    plt.pcolor(CA, vmin = 0, vmax = 1, cmap = "copper_r")  # plot current CA
+    plt.axis('image')
+    plt.title('time: ' + str(time))
+    plt.draw()
+    plt.pause(0.5)
 
-# get initial position
-x = 0
-y = -turtle.window_height() / 2
+    CA = simulation_step(CA, next_CA)  # advance the simulation
 
-turtle.hideturtle()
-turtle.left(90)
-turtle.penup()
-turtle.goto(x, y)
-turtle.pendown()
-draw_plant(plant)
-
-ts = turtle.getscreen().getcanvas()
-ts.postscript(file = "fern.eps")

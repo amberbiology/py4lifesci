@@ -1,0 +1,8 @@
+n = 0 A [ 1 ]
+n = 1 AB [ 2 ]
+n = 2 ABA [ 3 ]
+n = 3 ABAAB [ 5 ]
+n = 4 ABAABABA [ 8 ]
+n = 5 ABAABABAABAAB [ 13 ]
+n = 6 ABAABABAABAABABAABABA [ 21 ]
+n = 0 X [ 1 ]

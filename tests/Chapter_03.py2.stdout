@@ -1,0 +1,77 @@
+Sequence length is  4
+a
+t
+c
+g
+This line will be executed for each pass through the loop
+So will this one
+This line will be executed for each pass through the loop
+So will this one
+This line will be executed for each pass through the loop
+So will this one
+This line will be executed for each pass through the loop
+So will this one
+This line will only be executed at the end
+1 a
+2 t
+3 c
+4 g
+a
+g
+g
+atcg
+atcg
+c
+cg
+cg
+tcg
+a
+g
+g
+['a', 't', 'c', 'g']
+['a', 't', 'c', 'g']
+['c']
+['c', 'g']
+['c', 'g']
+['t', 'c', 'g']
+Length of myList is:  5
+atcg
+['a', 't', 'c', 'g']
+42
+True
+None
+c
+['t', 'c']
+
+['r', 'e', 'c', 'o', 'g', 'n', 'i', 's', 'e']
+recognize
+recognize
+['apple', 'banana', 'pear', 'llama', 'orange']
+['apple', 'banana', 'pear', 'llama', 'orange', 'peach']
+['apple', 'banana', 'kiwi', 'pear', 'llama', 'orange', 'peach']
+['apple', 'banana', 'kiwi', 'pear', 'orange', 'peach']
+['apple', 'banana', 'kiwi', 'pear', 'lemon', 'peach']
+['apple', 'banana', 'kiwi', 'lemon', 'peach', 'pear']
+Nigel
+guitar
+11
+p53
+9606
+True
+['cytoplasm', 'nucleus']
+cytoplasm
+nucleus
+4002.6
+['sma1', 'bamH1']
+True
+False
+['bamH1', 'sma1']
+6
+16
+-1
+Substring found at:  6
+Substring found at:  16
+['apple', 'orange']
+['apple', 'pear']
+('apple', 'orange')
+[('gcgatgcta', 2800.7999999999997), ('ggatccgcgatcgcgtacgatcgtacgcggtacggac', 11478.400000000005), ('ggatccttctc', 3345.1999999999994)]
