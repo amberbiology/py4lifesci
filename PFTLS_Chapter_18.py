@@ -135,10 +135,11 @@ plt.ylim(0, susceptible_count+infected_count+recovered_count)
 plt.xlabel('time')
 plt.ylabel('# patients')
 
-plt.plot(t, S,  label="S")
-plt.plot(t, I,  label="I")
-plt.plot(t, R,  label="R")    
+plt.plot(t, S, label="S", linestyle="solid")
+plt.plot(t, I, label="I", linestyle="dotted")
+plt.plot(t, R, label="R", linestyle="dashed")    
 plt.legend()
+plt.savefig("Figure-18-1.png", dpi=600)
 plt.show()
 
 # Local variables:

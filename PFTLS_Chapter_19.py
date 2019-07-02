@@ -119,8 +119,8 @@ def plot_population(allele_counts, generations, selection):
         plt.title('drift')
         
     time_points = list(range(generations + 1))
-    plt.plot(time_points, allele_counts[:,0], label="A")  # A allele
-    plt.plot(time_points, allele_counts[:,1], label="B")  # B allele
+    plt.plot(time_points, allele_counts[:,0], label="A", linestyle="solid")  # A allele
+    plt.plot(time_points, allele_counts[:,1], label="B", linestyle="dotted")  # B allele
     plt.legend()
     plt.draw()
 
@@ -136,10 +136,12 @@ if __name__ == "__main__":
     # drift
     allele_counts = simulate_population(generations, num_alleles, selection=False)
     plot_population(allele_counts, generations, selection=False)
+    plt.savefig("Figure-19-1.png", dpi=600)
 
     # drift + selection
     allele_counts = simulate_population(generations, num_alleles, selection=True)
     plot_population(allele_counts, generations, selection=True)
-
+    plt.savefig("Figure-19-3.png", dpi=600)
+    
     plt.show()
 

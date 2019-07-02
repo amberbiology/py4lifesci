@@ -50,6 +50,7 @@ Ch = np.zeros(generations+1)
 Ch[0] = 100.0
 Fx[0] = 10.0
 
+
 # set the parameters
 dt = 0.01      # scale parameters so that each timestep doesn't "jump"
 
@@ -78,10 +79,11 @@ plt.xlabel('time')
 plt.ylabel('population count')
     
 time_points = list(range(generations + 1))
-plt.plot(time_points, Fx, label="Foxes")  
-plt.plot(time_points, Ch, label="Chickens")  
+plt.plot(time_points, Fx, label="Foxes", linestyle="solid")  
+plt.plot(time_points, Ch, label="Chickens", linestyle="dotted")  
 plt.legend()
 plt.draw()
+plt.savefig("Figure-17-1.png", dpi=600)
 
 # create state space figure with animation
 
