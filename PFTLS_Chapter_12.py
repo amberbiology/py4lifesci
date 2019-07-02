@@ -48,9 +48,9 @@ def dual_repressor(TF_concentration_1, TF_concentration_2, K_D1, K_D2, w):
     s = 1/(1 + TF_concentration_1/K_D1 + TF_concentration_2/K_D2 + ((TF_concentration_1/K_D1) * (TF_concentration_2/K_D2))* w)
     return s
 
-def draw_points(TF_ratio, repression, color):
+def draw_points(TF_ratio, repression, color, linestyle="dashed"):
     plt.axhline(repression,
-                linestyle='dashed',
+                linestyle=linestyle,
                 color=color,
                 linewidth=2)
     plt.annotate("%.1g" % repression,
@@ -69,27 +69,30 @@ K_D2 = 25 * K_D1
 TF_concentration_1  = arange(0.001, 1000, 0.001) * K_D1
 plt.loglog(TF_concentration_1 / K_D1,
            single_repressor(TF_concentration_1, K_D1),
-           basex=10, color="blue", label="single")
+           basex=10, color="blue", label="single", linestyle="dotted", linewidth=2)
 plt.xlabel("[TF]/$K_D$")
 plt.ylabel("gene expression, $s$")
+plt.title('Transcriptional repression')
+plt.savefig("Figure-12-3.png", dpi=600)
 
 # dual repressor
 w = 200
 TF_concentration_2  = arange(0.001, 1000, 0.001) * K_D2
 plt.loglog(TF_concentration_2 / K_D2,
            dual_repressor(TF_concentration_2, TF_concentration_2, K_D1, K_D2, w),
-           basex=10, color="green", label="dual")
+           basex=10, color="green", label="dual", linestyle="solid")
+plt.savefig("Figure-12-6.png", dpi=600)
 
 for TF_ratio in [0.5, 1.0]:
-    plt.axvline(x=TF_ratio, linestyle='dashed', color='pink', linewidth=3)
+    plt.axvline(x=TF_ratio, linestyle='dashdot', color='pink', linewidth=3)
     TF_value = TF_ratio * K_D1  # convert ratio into TF concentration
     repression = single_repressor(TF_value, K_D1) 
-    draw_points(TF_ratio, repression, "blue")
+    draw_points(TF_ratio, repression, "blue", linestyle="dotted")
     TF_value = TF_ratio * K_D2  
     repression = dual_repressor(TF_value, TF_value, K_D1, K_D2, w)
-    draw_points(TF_ratio, repression, "green")
+    draw_points(TF_ratio, repression, "green", linestyle="solid")
 
-plt.title('Transcriptional repression')
 plt.legend(loc='lower left')
+plt.savefig("Figure-12-7.png", dpi=600)
 plt.show()
 
