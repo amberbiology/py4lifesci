@@ -144,6 +144,7 @@ for d in dist:
 print()
 plt.scatter(posx, posy, c=posz, s=100)
 plt.gray()
+plt.savefig("Figure-11-5.png", dpi=600)
 plt.show()
 
 
@@ -165,10 +166,11 @@ for angle in range(0,360,incRot):
     eData.append(elec)
     print(angle,dist,elec)
 plt.title('Distance/Electrostatic Energy vs. Bond Rotation')
-plt.plot(angleData,eData,"red",angleData,distData,'blue')
+plt.plot(angleData,eData,"r-",angleData,distData,'b:')
 plt.axis([0,360,0,20])
 plt.xlabel('Rotation Angle (Degrees)')
 plt.ylabel('Distance (A)                             E (kCal/mol)')
+plt.savefig("Figure-11-6.png", dpi=600)
 plt.show()
 
 

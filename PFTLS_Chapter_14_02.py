@@ -39,8 +39,6 @@ import matplotlib.pyplot as plt
 
 # Model 2: toggle switch: four reactions
 
-scaling = 1.0
-
 alpha = 1     # synthesis mRNA
 p = 10        # number of protein molecules per mRNA event
 protein_degr_rate = 1/50.0   # degrading mRNA
@@ -73,52 +71,59 @@ def do_reaction(n_A, n_B, next_reaction):
 
     return n_A, n_B
 
-max_time = 10000.0
+def toggle_switch(figurefile):
 
-time_points = []
-A_counts  = []
-B_counts  = []
+    max_time = 10000.0
 
-n_A = round(11*scaling)
-n_B = round(34*scaling)
+    time_points = []
+    A_counts  = []
+    B_counts  = []
 
-seed(50)
-t = 0.0
+    n_A = round(11*scaling)
+    n_B = round(34*scaling)
 
-num_reactions = 4
+    seed(50)
+    t = 0.0
 
-while t <= max_time:
+    num_reactions = 4
 
-    time_points.append(t)
-    A_counts.append(n_A)
-    B_counts.append(n_B)
+    while t <= max_time:
 
-    rates = calculate_reaction_rates(n_A, n_B)
-    total_rates = sum(rates)
+        time_points.append(t)
+        A_counts.append(n_A)
+        B_counts.append(n_B)
 
-    delta_t = exponential(1.0/total_rates)
-    type = uniform()*total_rates
+        rates = calculate_reaction_rates(n_A, n_B)
+        total_rates = sum(rates)
 
-    # find the reaction
-    for reaction in range(0, num_reactions):
-        if (sum(rates[0:reaction+1]) >= type):
-            next_reaction=reaction
-            break
+        delta_t = exponential(1.0/total_rates)
+        type = uniform()*total_rates
 
-    n_A, n_B = do_reaction(n_A, n_B, next_reaction) # carry out reaction
+        # find the reaction
+        for reaction in range(0, num_reactions):
+            if (sum(rates[0:reaction+1]) >= type):
+                next_reaction=reaction
+                break
 
-    t = t + delta_t 
+        n_A, n_B = do_reaction(n_A, n_B, next_reaction) # carry out reaction
 
-fig1 = plt.figure()
-plt.xlim(0, max_time)
-plt.ylim(0, max(max(A_counts, B_counts)))
-plt.xlabel('time')
-plt.ylabel('# species')
-plt.plot(time_points, A_counts, label="A") # species A
-plt.plot(time_points, B_counts, label="B") # species B
-plt.legend()
-plt.show()
+        t = t + delta_t 
 
+    fig1 = plt.figure()
+    plt.xlim(0, max_time)
+    plt.ylim(0, max(max(A_counts, B_counts)))
+    plt.xlabel('time')
+    plt.ylabel('# species')
+    plt.plot(time_points, A_counts, label="A", color="lightblue") # species A
+    plt.plot(time_points, B_counts, label="B", color="darkgreen") # species B
+    plt.legend()
+    plt.savefig(figurefile, dpi=600)
+    plt.show()
+
+scaling=1.0
+toggle_switch("Figure-14-15.png")
+scaling=0.25
+toggle_switch("Figure-14-16.png")
 
 # Local variables:
 # indent-tabs-mode: nil
