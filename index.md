@@ -6,7 +6,8 @@ From here you can directly browse the code from the book, or download it to try 
 
 <!-- [!Second edition](https://raw.githubusercontent.com/amberbiology/py4lifesci/gh-pages/preorder.png "Second edition") -->
 
-The second edition, now published by Apress, is now available on pre-order:
+The second edition, published by Apress, is now available :
 
-### [Preorder book on Apress](https://www.apress.com/us/book/9781484245224)
-### [Preorder book at Amazon](https://www.amazon.com/Python-Life-Sciences-introduction-Scientists/dp/1484245229/)
+### [Buy on Bookshop.org](https://bookshop.org/books/python-for-the-life-sciences-a-gentle-introduction-to-python-for-life-scientists/9781484245224?aid=4751) (recommended route for US-based customers - profits are shared with local bookshops of your choice)
+### [Buy on Apress](https://www.apress.com/us/book/9781484245224)
+### [Buy on Amazon](https://www.amazon.com/Python-Life-Sciences-introduction-Scientists/dp/1484245229/)
